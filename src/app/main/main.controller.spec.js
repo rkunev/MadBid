@@ -5,7 +5,7 @@
         var vm;
 
         beforeEach( module( 'madBid' ) );
-        beforeEach( inject( function( _$controller_, ) {
+        beforeEach( inject( function( _$controller_ ) {
             vm = _$controller_( 'MainController' );
         } ) );
 
