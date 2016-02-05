@@ -3,10 +3,10 @@
 
   angular
     .module('madBid')
-    .directive('acmeNavbar', acmeNavbar);
+    .directive('madNavbar', madNavbar);
 
   /** @ngInject */
-  function acmeNavbar() {
+  function madNavbar() {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',

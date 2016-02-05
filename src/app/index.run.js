@@ -1,14 +1,11 @@
-(function() {
-  'use strict';
+( function() {
+    'use strict';
 
-  angular
-    .module('madBid')
-    .run(runBlock);
+    angular
+        .module( 'madBid' )
+        .run( runBlock );
 
-  /** @ngInject */
-  function runBlock($log) {
+    /** @ngInject */
+    function runBlock() {}
 
-    $log.debug('runBlock end');
-  }
-
-})();
+} )();
