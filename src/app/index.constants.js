@@ -1,10 +1,9 @@
 /* global malarkey:false, moment:false */
-(function() {
-  'use strict';
+( function() {
+    'use strict';
 
-  angular
-    .module('madBid')
-    .constant('malarkey', malarkey)
-    .constant('moment', moment);
+    angular
+        .module( 'madBid' )
+        .constant( 'moment', moment );
 
-})();
+} )();

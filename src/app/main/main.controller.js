@@ -6,33 +6,37 @@
         .controller( 'MainController', MainController );
 
     /** @ngInject */
-    function MainController( $timeout, toastr, productsService ) {
+    function MainController( productsService, usersService ) {
         var vm = this;
 
-        vm.watches = [];
-
         vm.creationDate = 1454663156769;
-        vm.showToastr = showToastr;
+
+        vm.products = [];
+        vm.availableProducts = [];
+        vm.currentProduct = {};
+
         vm.productBid = productBid;
+        vm.changeProductList = changeProductList;
 
         activate();
 
         function activate() {
             getProducts();
+            changeProductList();
         }
 
-        function showToastr() {
-            toastr.info( 'Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>' );
+        function changeProductList() {
+            vm.products = productsService.getProducts( vm.currentProduct.id );
         }
 
         function getProducts() {
-            vm.watches = productsService.getProducts();
+            vm.availableProducts = productsService.getProductCategories();
+            vm.currentProduct = productsService.getDefaultProduct();
         }
 
-        function productBid( watch ) {
-            watch.price = productsService.updatePrice( watch.price );
-            console.log( watch.price );
-            watch.winner = productsService.getRandomWinner();
+        function productBid( product ) {
+            product.price = productsService.updatePrice( product.price );
+            product.winner = usersService.getRandomWinner();
         }
     }
 } )();

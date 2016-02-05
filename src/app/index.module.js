@@ -1,7 +1,7 @@
-(function() {
-  'use strict';
+( function() {
+    'use strict';
 
-  angular
-    .module('madBid', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'toastr']);
+    angular
+        .module( 'madBid', [ 'ngAnimate', 'ngTouch', 'ui.bootstrap' ] );
 
-})();
+} )();

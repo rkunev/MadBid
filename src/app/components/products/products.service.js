@@ -7,25 +7,35 @@
 
     /** @ngInject */
     function productsService() {
-        var data = [ {
-            'title': 'AngularJS',
+        var service = {
+            getProducts: getProducts,
+            getProductCategories: getProductCategories,
+            getWatches: getWatches,
+            updatePrice: updatePrice,
+            getDefaultProduct: getDefaultProduct
+        };
+
+        var watches = [ {
+            'title': 'Movado Men\'s',
             'winner': '',
-            'description': 'HTML enhanced for web apps!',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             'price': 1,
-            'thumb': 'angular.png'
+            'thumb': 'mm.jpg'
         }, {
-            'title': 'BrowserSync',
+            'title': 'Fitbit Charge',
             'winner': '',
-            'description': 'Time-saving synchronised browser testing.',
-            'price': 1,
-            'thumb': 'browsersync.png'
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, dolorem.',
+            'price': 1.15,
+            'thumb': 'fc.jpg'
         }, {
-            'title': 'GulpJS',
+            'title': 'Ingersoll Mens',
             'winner': '',
-            'description': 'The streaming build system.',
-            'price': 1,
-            'thumb': 'gulp.png'
-        }, {
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
+            'price': 3.33,
+            'thumb': 'im.jpg'
+        } ];
+
+        var techs = [ {
             'title': 'Jasmine',
             'winner': '',
             'description': 'Behavior-Driven JavaScript.',
@@ -57,18 +67,45 @@
             'thumb': 'ui-bootstrap.png'
         } ];
 
-        var winners = [ 'Harry', 'Ron', 'John', 'Bob', 'Smith', 'Martin' ];
+        var furniture = [];
 
-        this.getProducts = getProducts;
-        this.getRandomWinner = getRandomWinner;
-        this.updatePrice = updatePrice;
+        var productCategories = [ {
+            id: '0',
+            name: 'Watches'
+        }, {
+            id: '1',
+            name: 'Technologies'
+        }, {
+            id: '2',
+            name: 'Furniture'
+        } ];
+        var defaultProduct = {
+            id: '0',
+            name: 'Watches'
+        };
 
-        function getProducts() {
-            return data;
+        var products = [
+            watches,
+            techs,
+            furniture
+        ];
+
+        return service;
+
+        function getDefaultProduct() {
+            return defaultProduct;
         }
 
-        function getRandomWinner() {
-            return winners[ getRandomIntFromInterval( 0, winners.length - 1 ) ];
+        function getProducts( productId ) {
+            return products[ productId ];
+        }
+
+        function getWatches() {
+            return watches;
+        }
+
+        function getProductCategories() {
+            return productCategories;
         }
 
         function updatePrice( currentPrice ) {
@@ -76,10 +113,6 @@
             newPrice = newPrice.toFixed( 2 );
 
             return parseFloat( newPrice );
-        }
-
-        function getRandomIntFromInterval( min, max ) {
-            return Math.floor( Math.random() * ( max - min + 1 ) + min );
         }
     }
 
