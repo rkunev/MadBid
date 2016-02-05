@@ -48,7 +48,7 @@
                     <div class="caption">
                         <h3>{{ product.title }}</h3>
                         <p>{{ product.description }}</p>
-                        <p class="pull-left">{{ product.price | currency }}</p>
+                        <p>{{ product.price | currency }}</p>
                         <button type="button" class="btn btn-sm btn-success pull-right" ng-click="main.productBid(product)">Bid!</button>
                         <p ng-show="product.winner"><span>Current winner: </span>{{ product.winner }}</p>
                     </div>
